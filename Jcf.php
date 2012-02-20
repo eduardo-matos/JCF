@@ -49,11 +49,13 @@ class Cf_Controller_Action_Helper_Jcf extends Zend_Controller_Action_Helper_Abst
 	 * @param string $key
 	 * @param mix $value
 	 * @param bool $value
+	 *
+	 * @throws Exception If key is not an integer or contains any non alphabetic characters.
 	 */
 	public function __set($key, $value)
 	{
 		if(!is_string($key) || preg_match('/[^a-zA-Z]/', $key)) {
-			throw new Exception('Key must be integer or string and contain only letters (no accents)!');
+			throw new Exception('Key must be string and contain only letters (no accents)!');
 		}
 		
 		if(true === $this->_overwrite) {
